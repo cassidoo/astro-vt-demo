@@ -1,0 +1,32 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layout.astro"
+import locations from "../../locations.json"
+
+export async function getStaticPaths() {
+	const paths = locations.map((l) => ({
+		params: { city: l.city.toLowerCase() },
+		props: {
+			city: l.city,
+			country: l.country,
+			emoji: l.emoji,
+			description: l.description,
+		}
+	}));
+
+	return paths;
+}
+
+let { city, country, emoji, description } = Astro.props;
+
+---
+
+<Layout title={city}>
+	<h1 transition:name={`${city} link`}>{city}, {country}</h1>
+
+	<p>
+		<span transition:name={`${city} emoji`}>{emoji}</span> {description}
+	</p>
+
+	<a href="/">Go back home</a>
+</Layout>

@@ -1,0 +1,25 @@
+---
+import Layout from "../layout.astro"
+import locations from "../locations.json"
+---
+
+<Layout title="Home">
+	<h1>Astro View Transitions Demo</h1>
+
+	<p>
+		Click on the links below to see the view transitions in action.
+	</p>
+
+	<ul>
+		{locations.map((city) => {
+			return (
+				<li>
+					<span transition:name={`${city.emoji} emoji`}>{city.emoji}</span>
+					<a href={`/city/${city.city.toLowerCase()}`} transition:name={`${city.city} link`}>
+						{city.city}, {city.country}
+					</a>
+				</li>
+			)
+		})}
+	</ul>	
+</Layout>

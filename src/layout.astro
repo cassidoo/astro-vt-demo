@@ -1,0 +1,32 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+let { title } = Astro.props;
+---
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title ? `${title} | ` : ""} Astro View Transitions Demo</title>
+		<style is:global>
+			html {
+				font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+				font-size: 1.3em;
+				max-width: 40rem;
+				padding: 2rem;
+				margin: auto;
+				line-height: 1.5rem;
+			}
+			ul {
+				padding: 0;
+				list-style-type: none;
+			}
+		</style>
+		<ViewTransitions />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
