@@ -22,7 +22,8 @@ let { city, country, emoji, description } = Astro.props;
 ---
 
 <Layout title={city}>
-	<h1 transition:name={`${city} link`}>{city}, {country}</h1>
+	<h1>Astro View Transitions Demo</h1>
+	<h2 transition:name={`${city} link`}>{city}, {country}</h2>
 
 	<p>
 		<span transition:name={`${city} emoji`}>{emoji}</span> {description}
